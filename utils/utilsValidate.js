@@ -46,3 +46,33 @@ export function isIdCard(idCard) {
     return false;
   }
 }
+
+// 输入为非负数（浮点数）保留二位小数
+export function checkNumNotPosFloat(rule, value, callback) {
+  if (value) {
+    var flag = /^(?:[0-9]\d*|0)(?:\.\d{1,1})?$/.exec(value);
+    if (!flag) {
+        return callback(new Error('请输入有效数值,最多保留二位小数'));
+    } else {
+        callback();
+    }
+
+  } else {
+      callback();
+  }
+}
+
+// 输入为正数（浮点数） 保留两位小数
+export function checkNumPosFloat(rule, value, callback) {
+  if (value) {
+    var flag = /^(?!0+(?:\.0+)?$)(?:[1-9]\d*|0)(?:\.\d{1,2})?$/.exec(value);
+    if (!flag) {
+        return callback(new Error('请输入有效数值,最多保留二位小数'));
+    } else {
+        callback();
+    }
+
+  } else {
+      callback();
+  }
+}
